@@ -1,0 +1,24 @@
+1.首先导入框架libsqlite3.0.tbd</br>
+2.核心代码</br>
+    
+    //创建数据库</br>
+    if (sqlite3_open([dbFile UTF8String], &database) == SQLITE_OK) {</br>
+          NSLog(@"open success”);</br>
+
+        //创建一条sql语句（id 整型,主键，自增， name,sex,class 文本类型）</br>
+        const char *createSql = "create table if not exists student (id integer primary key autoincrement,name text,sex text,class text);";</br>
+        //创建错误信息</br>
+        char *err;</br>
+        if (sqlite3_exec(database, createSql, NULL, NULL, &err) != SQLITE_OK) {</br>
+            
+           NSLog(@"create table fail");</br>
+        }</br>
+    }else
+    {</br>
+        NSLog(@"open fail");</br>
+    }</br>
+
+
+3.sqlproforsqlite.dmg打开数据库</br>
+4.增、删、改、查操作</br>
+
